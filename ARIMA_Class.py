@@ -19,7 +19,7 @@ class PreProcessing :
 
 		self.per_bk = self.db['PermanentBookings']
 		
-		self.act_bk = self.db['ActiveBookings']
+		# self.act_bk = self.db['ActiveBookings']
 
 
 		
