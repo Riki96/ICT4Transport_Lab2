@@ -6,10 +6,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sb
 
-
-
-
-
 class PreProcessing :
 	def __init__():
 		
@@ -71,12 +67,18 @@ class PreProcessing :
 
 		result = self.per_bk.aggregate(pipeline)
 
-		return 
-
-
-	def dataset_creation():
-
-
+	def dataset_creation(cities, start, end):
+		for c in cities:
+			if c == 'New York City':
+				start = datetime.datetime(start, timedelta=-8)
+				end = datetime.datetime(end, timedelta=-8)
+			else:
+				start = datetime.datetime(start)
+				end = datetime.datetime(end)
+			data = self.mongoDB(c, start, end)
+			df = pd.DataFrame(data)
+			c = c.trim()
+			df.to_excel('Data_{}'.format(c))
 
 class DataMining ():
 	def __init__(self,dataset):
