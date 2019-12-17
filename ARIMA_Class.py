@@ -101,7 +101,21 @@ class DataMining ():
 		plt.figure()
 		plt.plot(PACF)
 
-	#def performances():
+	def opening_files(self):
+		for filename in os.listdir('data'):
+			if 'Torino' in filename:
+				print ('Torino')
+				Torino = pd.read_excel('data/'+filename)
+			elif 'Amsterdam' in filename:
+				print ('Amsterdam')
+				Amsterdam = pd.read_excel('data/'+filename)
+			elif 'New York' in filename:
+				print ('New York')
+				NY = pd.read_excel('data/'+filename)
+
+
+		return Torino, Amsterdam, NY
+	
 
 	def model_specifications():
 		pass
