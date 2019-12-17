@@ -102,7 +102,8 @@ class DataMining ():
 			elif 'New York' in filename:
 				print ('New York')
 				NY = pd.read_excel('data/'+filename)
-				
+			
+
 		return Torino, Amsterdam, NY
 	
 
