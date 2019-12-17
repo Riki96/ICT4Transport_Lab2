@@ -5,6 +5,7 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from statsmodels.tsa.stattools import acf, pacf
 import seaborn as sb
 import os
 
@@ -87,28 +88,26 @@ class PreProcessing :
 			df.to_excel('data/Data_{}.xlsx'.format(c))
 
 class DataMining ():
-	def __init__(self):
-		pass
+	def __init__(self, d=0, p=0, q=0):
+		self.d = d
+		self.p = p
+		self.q = q
 
-	def opening_files(self):
-
-		for filename in os.listdir('data'):
-			if 'Torino' in filename:
-				print ('Torino')
-				Torino = pd.read_excel('data/'+filename)
-			elif 'Amsterdam' in filename:
-				print ('Amsterdam')
-				Amsterdam = pd.read_excel('data/'+filename)
-			elif 'New York' in filename:
-				print ('New York')
-				NY = pd.read_excel('data/'+filename)
-			
-
-		return Torino, Amsterdam, NY
-	
-
-	#def model_specifications():
+	def acf(self):
+		df = pd.read_excel('data/Data_Torino.xlsx')
+		data = df.loc[:, 'Total']
+		ACF = acf(data, nlags=736)
+		PACF = pacf(data, nlags=736)
+		plt.figure()
+		plt.plot(PACF)
 
 	#def performances():
 
-	#def prediction_results():
+	def model_specifications():
+		pass
+
+	def performances():
+		pass
+
+	def prediction_results():
+		pass
