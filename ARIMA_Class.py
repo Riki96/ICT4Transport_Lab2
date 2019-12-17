@@ -26,24 +26,55 @@ class PreProcessing :
 		self.act_bk = self.db['ActiveBookings']
 
 
-		init_date =datetime.datetime(2017,10,1)
-		final_date =  datetime.datetime(2017,10,31)
-
 		
 
-	def mongoDB():
+	def mongoDB(self,city, start, end):
 		pipeline = [{
-					'$match': {
-						'city': city,
-						''
+						'$match':{
+							'city':c,
+							'init_time':{'$gte':unix_start,'$lte':unix_end}
+							}
 					},
+						#FILTERING PORTION OF PIPELINE-----------------
+					{
+						'$project':{
+							'init_date':1,
+							'init_time':1,
+							'final_time':1,
+							'plate':1,
+							'city':1,
+							'durata': { '$divide': [ { '$subtract': ["$final_time", "$init_time"] }, 60 ] },
+							'dist_lat':{'$abs':{'$subtract': [{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 0]}, 0]}, {'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 1]}, 0]}]}},
+							'dist_long':{'$abs':{'$subtract': [{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 0]}, 1]}, {'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 1]}, 1]}]}},
+							}
+					},
+					{
+						'$match':{
+							'$or':[
+								{'dist_long':{'$gte':0.0003}},
+								{'dist_lat':{'$gte':0.0003}},
+								],
+							'durata':{'$lte':180,'$gte':2},
+							}
+					},
+						#END OF FILTERING
+					{ 
+						"$group": {
+    							"_id":{
+    									'hour':{'$hour':'$init_date'},
+    									'day':{'$dayOfYear':'$init_date'},
+    									'plate':'$plate'
+    									}
+    							
+    						}
+		        	}]
 
-		}]
+		result = self.per_bk.aggregate(pipeline)
+
+		return 
 
 
-	def cleaning():
-
-	def creating_dataset():
+	def dataset_creation():
 
 
 
