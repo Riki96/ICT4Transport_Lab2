@@ -88,10 +88,31 @@ class PreProcessing :
 			df.to_excel('data/Data_{}.xlsx'.format(c))
 
 class DataMining ():
-	def __init__(self, d=0, p=0, q=0):
+	def __init__(self):
 		self.d = d
 		self.p = p
 		self.q = q
+	
+	def system_plotting(self,cities,date):
+		x_lab=[]
+		for i in range(31):
+			date = date + datetime.timedelta(days=i)
+			x_lab.append(str('%r %d'%(date.strftime("%a"),i+1)))
+			# x_lab.append(str('%r %d'%(date.strftime("%a"),i+1)))
+		Torino, Amsterdam, New_York = self.files_opening()
+		vect = [Torino, Amsterdam, New_York]
+		cnt=0
+		for i in vect:
+			x_axis = [x*24 for x in range(31)]
+			# x_lab = ['Day %d'%i for i in range(1,32)]
+			print(len(i))
+			plt.figure(figsize=(15,5))
+			plt.plot(list(i.loc[:,'Total']))
+			plt.title(cities[cnt]+' time series')
+			plt.grid()
+			plt.xticks(x_axis,x_lab, rotation=45)
+			plt.show()
+			cnt+=1
 
 	def acf(self):
 		df = pd.read_excel('data/Data_Torino.xlsx')
@@ -101,7 +122,7 @@ class DataMining ():
 		plt.figure()
 		plt.plot(PACF)
 
-	def opening_files(self):
+	def files_opening(self):
 		for filename in os.listdir('data'):
 			if 'Torino' in filename:
 				print ('Torino')

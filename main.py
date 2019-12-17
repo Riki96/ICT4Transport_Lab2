@@ -13,4 +13,6 @@ endNY = datetime.datetime(2017, 10, 31, 23, 59, 59, tzinfo=timezone('US/Eastern'
 # prepro.dataset_creation(CITIES, start, end, startNY, endNY)
 
 mining = DataMining()
+
 mining.acf()
+mining.system_plotting(CITIES, start)
