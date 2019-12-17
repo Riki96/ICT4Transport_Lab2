@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sb
+import os
 
 class PreProcessing :
 	def __init__(self):
@@ -83,14 +84,30 @@ class PreProcessing :
 			df = df.sort_values(['Day', 'Hour'])
 			print(df)
 			c = c.strip()
-			df.to_excel('Data_{}.xlsx'.format(c))
+			df.to_excel('data/Data_{}.xlsx'.format(c))
 
-# class DataMining ():
-# 	def __init__(self,dataset):
-# 		self.data = dataset
+class DataMining ():
+	def __init__(self):
+		pass
 
-# 	def model_specifications():
+	def opening_files(self):
 
-# 	def performances():
+		for filename in os.listdir('data'):
+			if 'Torino' in filename:
+				print ('Torino')
+				Torino = pd.read_excel('data/'+filename)
+			elif 'Amsterdam' in filename:
+				print ('Amsterdam')
+				Amsterdam = pd.read_excel('data/'+filename)
+			elif 'New York' in filename:
+				print ('New York')
+				NY = pd.read_excel('data/'+filename)
+				
+		return Torino, Amsterdam, NY
+	
 
-# 	def prediction_results():
+	#def model_specifications():
+
+	#def performances():
+
+	#def prediction_results():
