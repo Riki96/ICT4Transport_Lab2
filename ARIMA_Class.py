@@ -5,7 +5,7 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-# from statsmodels.tsa.stattools import acf, pacf
+import random
 import statsmodels as sm
 import seaborn as sb
 import os
@@ -65,6 +65,7 @@ class PreProcessing :
 
 		result = self.per_bk.aggregate(pipeline)
 		output = list(result)
+		# print(output)
 		return output
 
 	def dataset_creation(self, cities, start, end, startNY, endNY):
@@ -78,6 +79,7 @@ class PreProcessing :
 			unix_end = time.mktime(end.timetuple())
 
 			data = self.mongoDB(c, unix_start, unix_end)
+			# exit()
 			df = pd.DataFrame({
 				'Day':[i['_id']['day'] for i in data],
 				'Hour':[i['_id']['hour'] for i in data],
@@ -89,18 +91,47 @@ class PreProcessing :
 			df.to_excel('data/Data_{}.xlsx'.format(c))
 
 class DataMining ():
-	def __init__(self):
+	def __init__(self, d=0, p=0, q=0):
 		self.d = d
 		self.p = p
 		self.q = q
-	
-	def system_plotting(self,cities,date):
+
+	def data_filling(self, dataset, c):
+		hours = []
+		for i in range(31):
+			for j in range(24):
+				hours.append(j)
+		cnt = 0
+		added = 0
+		# print(len(hours))
+		tmp_df = []
+		for row, col in dataset.iterrows():
+			# print(dataset.loc[row, 'Hour'])
+			try:
+				if dataset.loc[row+1, 'Hour'] - col['Hour'] > 1:
+					for k in range(col['Hour']+1, dataset.loc[row+1, 'Hour']):
+						tmp_row = [col['Day'], col['Hour'] + k,
+									(col['Total']+k + dataset.loc[row+1, 'Total'])/2]
+						print(tmp_row)
+						tmp_df.append(tmp_row)	
+			except:
+				print('No Index')
+		# print(tmp_df)
+		tmp_df = pd.DataFrame(tmp_df, columns=['Day', 'Hour', 'Total'])
+		final_dataset = pd.concat([dataset.loc[:, 'Day':'Total'], tmp_df], ignore_index=True)
+		final_dataset = final_dataset.sort_values(['Day', 'Hour'])
+		print(final_dataset)
+		final_dataset.to_excel('data/Data_{}.xlsx'.format(c))
+		return final_dataset
+
+	def system_plotting(self, cities, date):
 		x_lab=[]
 		for i in range(31):
 			date = date + datetime.timedelta(days=i)
 			x_lab.append(str('%r %d'%(date.strftime("%a"),i+1)))
 			# x_lab.append(str('%r %d'%(date.strftime("%a"),i+1)))
 		Torino, Amsterdam, New_York = self.files_opening()
+
 		vect = [Torino, Amsterdam, New_York]
 		cnt=0
 		for i in vect:
@@ -109,7 +140,7 @@ class DataMining ():
 			print(len(i))
 			plt.figure(figsize=(15,5))
 			plt.plot(list(i.loc[:,'Total']))
-			plt.title(cities[cnt]+' time series')
+			plt.title(cities[cnt]+' Time Series')
 			plt.grid()
 			plt.xticks(x_axis,x_lab, rotation=45)
 			plt.show()
@@ -131,14 +162,17 @@ class DataMining ():
 	def files_opening(self):
 		for filename in os.listdir('data'):
 			if 'Torino' in filename:
-				print ('Torino')
+				# print('Torino')
 				Torino = pd.read_excel('data/'+filename)
+				Torino = self.data_filling(Torino, 'Torino')
 			elif 'Amsterdam' in filename:
-				print ('Amsterdam')
+				# print('Amsterdam')
 				Amsterdam = pd.read_excel('data/'+filename)
+				Amsterdam = self.data_filling(Amsterdam, 'Amsterdam')
 			elif 'New York' in filename:
-				print ('New York')
+				# print('New York')
 				NY = pd.read_excel('data/'+filename)
+				NY = self.data_filling(NY, 'New York City')
 		return Torino, Amsterdam, NY
 	
 
