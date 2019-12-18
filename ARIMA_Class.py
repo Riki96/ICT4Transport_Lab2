@@ -5,7 +5,8 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from statsmodels.tsa.stattools import acf, pacf
+# from statsmodels.tsa.stattools import acf, pacf
+import statsmodels as sm
 import seaborn as sb
 import os
 
@@ -114,13 +115,18 @@ class DataMining ():
 			plt.show()
 			cnt+=1
 
-	def acf(self):
+	def plot_correlations(self, plot=True, save=True):
+		from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 		df = pd.read_excel('data/Data_Torino.xlsx')
 		data = df.loc[:, 'Total']
-		ACF = acf(data, nlags=736)
-		PACF = pacf(data, nlags=736)
-		plt.figure()
-		plt.plot(PACF)
+
+		fig, ax = plt.subplots(2)
+		ax[0] = plot_acf(data, ax=ax[0], lags=48, title='ACF')
+		ax[1] = plot_pacf(data, ax=ax[1], lags=48, title='PACF')
+		if plot:
+			plt.show()
+		if save:
+			plt.savefig('plots/ACF_PACF.png')
 
 	def files_opening(self):
 		for filename in os.listdir('data'):
@@ -133,8 +139,6 @@ class DataMining ():
 			elif 'New York' in filename:
 				print ('New York')
 				NY = pd.read_excel('data/'+filename)
-
-
 		return Torino, Amsterdam, NY
 	
 
