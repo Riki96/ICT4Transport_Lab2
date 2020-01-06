@@ -31,7 +31,7 @@ class PreProcessing:
 						'init_time':{'$gte':unix_start,'$lte':unix_end}
 						}
 					},
-						#FILTERING PORTION OF PIPELINE-----------------
+						#START OF FILTERING
 					{
 						'$project':{
 							'init_date':1,
@@ -39,9 +39,24 @@ class PreProcessing:
 							'final_time':1,
 							'plate':1,
 							'city':1,
-							'duration': { '$divide': [ { '$subtract': ["$final_time", "$init_time"] }, 60 ] },
-							'dist_lat':{'$abs':{'$subtract': [{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 0]}, 0]}, {'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 1]}, 0]}]}},
-							'dist_long':{'$abs':{'$subtract': [{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 0]}, 1]}, {'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 1]}, 1]}]}},
+							'duration': {
+								'$divide': 
+										[{ '$subtract': ["$final_time", "$init_time"] }, 60]
+									},
+							'dist_lat':{
+								'$abs':{
+									'$subtract': 
+										[
+											{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 0]}, 0]}, 
+											{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 1]}, 0]}
+									]}},
+							'dist_long':{
+								'$abs':{
+									'$subtract': 
+										[
+											{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 0]}, 1]},
+											{'$arrayElemAt':[{'$arrayElemAt': [ "$origin_destination.coordinates", 1]}, 1]}
+									]}},
 						}
 					},
 					{
