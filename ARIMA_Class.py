@@ -14,10 +14,11 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from statsmodels.tsa.arima_model import ARIMA, ARIMAResults
 from pytz import timezone
 from PreProcessing_Class import PreProcessing
+import traceback
 
 class DataMining:
 	def __init__(self, start_year, end_year, start_month, end_month, run=False):
-		start = datetime.datetime(start_year, start_month, 10, 0, 0, 0, tzinfo=timezone('Europe/Paris'))
+		start = datetime.datetime(start_year, start_month, 1, 0, 0, 0, tzinfo=timezone('Europe/Paris'))
 		end = datetime.datetime(end_year, end_month, 31, 23, 59, 59, tzinfo=timezone('Europe/Paris'))
 		startNY = datetime.datetime(start_year, start_month, 1, 0, 0, 0, tzinfo=timezone('US/Eastern'))
 		endNY = datetime.datetime(end_year, end_month, 31, 23, 59, 59, tzinfo=timezone('US/Eastern'))
@@ -31,20 +32,25 @@ class DataMining:
 		self.cities = prepro.cities
 		self.files_opening()
 
-	def files_opening(self):
+	def files_opening(self, filling=False):
 		for filename in os.listdir('data'):
 			if 'Torino' in filename:
 				# print('Torino')
-				Torino = pd.read_excel('data/'+filename)
-				self.TO = self.data_filling(Torino, self.cities[0])
+				self.TO = pd.read_excel('data/'+filename)
+				
 			elif 'Amsterdam' in filename:
 				# print('Amsterdam')
-				Amsterdam = pd.read_excel('data/'+filename)
-				self.AM = self.data_filling(Amsterdam, self.cities[1])
+				self.AM = pd.read_excel('data/'+filename)
+				
 			elif 'New York' in filename:
 				# print('New York')
-				NY = pd.read_excel('data/'+filename)
-				self.NY = self.data_filling(NY, self.cities[2])
+				self.NY = pd.read_excel('data/'+filename)
+		# print(self.TO)
+
+		if filling:
+			self.TO = self.data_filling(self.TO, self.cities[0])
+			self.AM = self.data_filling(self.AM, self.cities[1])
+			self.NY = self.data_filling(self.NY, self.cities[2])
 
 		self.dataframes = [self.TO, self.AM, self.NY]
 
@@ -116,111 +122,240 @@ class DataMining:
 			plt.close()
 			cnt += 1
 	
-	def ts_preparation(self, df):
-		df.loc[:, 'Total'] += np.random.random_sample(len(df))/10
-		return df
+	def stationarity(self):
+		for df in self.dataframes:
+			plt.figure()
+			df['Total'].hist()
+			one, two, three = np.split(df['Total'].sample(frac=1),[int(.25*len(df['Total'])),int(.75*len(df['Total']))])
+			m1, m2, m3 = one.mean(), two.mean(), three.mean()
+			v1, v2, v3 = one.var(), two.var(), three.var()
 
-	def model_fitting(self, train_size=24*275, append=0, sliding=0, start=650):
-		# ps = [1, 2, 3, 4, 6, 8, 10, 12, 15, 20, 22, 24]
-		ps = [1,2,3,4]
-		ds = [0, 1, 2]
-		qs = [1, 2, 3, 4]
+			print(m1,m2,m3)
+			print(v1,v2,v3)
 
-		with open('AllModels.json') as f:
-			obj = json.loads(f.read()) #file in which all the models performances will be saved
+			adftest = sm.tsa.stattools.adfuller(df['Total'])
+			print(adftest)
+
+			plt.figure()
+			pd.plotting.lag_plot(df['Total'])
+			plt.show()
+
+	def mean_relative_error(self, test, prediction):
+		re = (abs(test.subtract(prediction))/abs(test)).sum()
+		mre = re/test.mean()
+		return mre
+
+	def model_fitting(self, train_size=24*14, append=0, sliding=0, start=650):
+		ps = [1,2,3,4,5,6,7]
+		ds = [0,1]
+		qs = [1,2,3,4,5,6,7]
+
+		# with open('AllModels_2.json') as f:
+			# obj = json.loads(f.read()) #file in which all the models performances will be saved
 			
+		obj = []
+		obj.append({
+			"Torino":[]
+			})
+		obj.append({
+			"Amsterdam":[]
+			})
+		obj.append({
+			"New York City":[]
+			})
+		error_to = []
+		error_am = []
+		error_ny = []
 		cnt = 0
-		self.best_order = {} #object to save only the model with the lowest MAE
+		# self.best_order = {} #object to save only the model with the lowest MRE
+		len_test = 24*7
 		for df in self.dataframes:
 			df = df.loc[:, 'Total']
-			train, test = df[0:train_size], df[train_size::]
-			mae_min = 1e5
+			train, test = df[0:train_size], df[train_size:train_size+len_test]
+			mre_min = 1e5
+			history = [x for x in train]
 			for d in ds:
 				for p in ps:
 					for q in qs:
-						history = [x for x in train]
 						yhats = []
 						print('ARIMA -> [{},{},{}]'.format(p,d,q))
-						if append: #if append mode is chosen, the fitting will be evaluated forecasting only 1 element per time
-							try:
-								for t in range(len(test)):
-									model = ARIMA(history, order=(p,d,q))
-									model_fit = model.fit(disp=0)
-									fc = model_fit.forecast()
-									yhats.append(fc[0])
-									history.append(fc[0])
-									if sliding: #if sliding mode is chosen, the first element will be deleted from the training set
-										history = history[1:]
+						try:
+							model = ARIMA(history, order=(p,d,q))
+							model_fit = model.fit(disp=0)
+							fc, se, conf = model_fit.forecast(len(test.index))
+							fc_s = pd.Series(fc, index=test.index)
+							lowers = pd.Series(conf[:,0], index=test.index)
+							uppers = pd.Series(conf[:,1], index=test.index)
+							mre = self.mean_relative_error(test, fc_s)
+							tmp_obj = {
+								'P':p,
+								'D':d,
+								'Q':q,
+								'MRE':mre
+							}
+							obj[cnt][self.cities[cnt]].append(tmp_obj)
+							print('Error: {}'.format(mre))
+							with open('AllModels_2.json', 'w') as f:
+								f.write(json.dumps(obj, indent=4))
 
-								mae = mean_absolute_error(test, yhats)
-								if mae < mae_min:
-									print('Best Model for {} is --> [{},{},{}] with {} MAE'.format(self.cities[cnt],p,d,q,mae))
-									self.best_order[self.cities[cnt]] = [p,d,q]
-									mae_min = mae
-							except:
-								print('Parameters Error')
-						else: #if append mode is not chosen, the system will evaluate all the testing element at once
-							try:
-								model = ARIMA(history, order=(p,d,q))
-								model_fit = model.fit(maxiter=300, resolver='ncg', disp=0)
-								fc, se, conf = model_fit.forecast(len(test.index))
-								fc_s = pd.Series(fc, index=test.index)
-								lowers = pd.Series(conf[:,0], index=test.index)
-								uppers = pd.Series(conf[:,1], index=test.index)
+							if mre < mre_min:
+								print('Best Model for {} is --> [{},{},{}] with {} MRE'.format(self.cities[cnt],p,d,q,mre))
+								# self.best_order[self.cities[cnt]] = [p,d,q]
+								mre_min = mre
+						except:
+							traceback.print_exc()
+							tmp_obj = {
+								'P':p,
+								'D':d,
+								'Q':q,
+								'MRE':'Impossible to fit'
+							}
+							obj[cnt][self.cities[cnt]].append(tmp_obj)
 
-								mae = mean_absolute_error(test, fc_s)
-								tmp_obj = {
-									'P':p,
-									'D':d,
-									'Q':q,
-									'MAE':mae
-								}
-								obj[self.cities[cnt]].append(tmp_obj)
-
-								print('Error: {}'.format(mae))
-								with open('AllModels.json', 'w') as f:
-									f.write(json.dumps(obj, indent=4))
-
-								if mae < mae_min:
-									print('Best Model for {} is --> [{},{},{}] with {} MAE'.format(self.cities[cnt],p,d,q,mae))
-									self.best_order[self.cities[cnt]] = [p,d,q]
-									mae_min = mae
-							except:
-								print('Parameters Error')
 			cnt += 1
 
-		with open('BestOrders.json', 'w+') as f:
-			f.write(json.dumps(self.best_order, indent=4))
-	
-	def results_predicting(self, start, end):
-		cnt = 0
-		with open('BestOrders.json') as f:
-			orders = json.loads(f.read())
-		self.dataframes = [self.TO]
-		for df in self.dataframes:
-			# history = [x for x in df[0::]]
-			# print(len(df.index))
-			print(self.cities[cnt])
-			order = orders[self.cities[cnt]]
-			model_fit = ARIMA(df.loc[6000::,'Total'], order=order).fit(disp=0, tol=1e7)
-			fc, _, conf = model_fit.forecast(10, alpha=0.05)
-			index_of_fc = np.arange(len(df.index), end)
+	def error_plotting(self):
+		with open('AllModels_2.json') as f:
+			models = json.loads(f.read())
 
-			fc_series = pd.Series(fc, index=index_of_fc)
-			lower_series = pd.Series(conf[:, 0], index=index_of_fc)
-			upper_series = pd.Series(conf[:, 1], index=index_of_fc)
+		to_models = models['Torino']
+		am_models = models['Amsterdam']
+		ny_models = models['New York City']
 
-			plt.plot(df.loc[start:, 'Total'])
-			plt.plot(fc_series, color='darkgreen')
-			plt.fill_between(lower_series.index, 
-                 lower_series, 
-                 upper_series, 
-                 color='k', alpha=.15)
+		plt.figure()
+		xtick = []
+		y = []
+		for i in to_models:
+			if i['MRE'] != 'Impossible to fit':
+				y.append(i['MRE'])
+				# xtick.append('p={}-d={}-q={}'.format(i['P'],i['D'],i['Q']))
+		# y = [i for i in y if i<100]
+		# x = [i for i in range(len(y))]
+		# plt.xticks(x, xtick)
+		plt.plot(y)
+		# plt.show()
 
+		xtick = []
+		y = []
+		for i in am_models:
+			if i['MRE'] != 'Impossible to fit':
+				y.append(i['MRE'])
+				# xtick.append('p={}-d={}-q={}'.format(i['P'],i['D'],i['Q']))
+		# y = [i for i in y if i<100]
+		# x = [i for i in range(len(y))]
+		# plt.xticks(x, xtick)
+		plt.plot(y, color='red')
+		# plt.show()
+
+		xtick = []
+		y = []
+		for i in ny_models:
+			if i['MRE'] != 'Impossible to fit':
+				y.append(i['MRE'])
+				# xtick.append('p={}-d={}-q={}'.format(i['P'],i['D'],i['Q']))
+		# y = [i for i in y if i<100]
+		# x = [i for i in range(len(y))]
+		# plt.xticks(x, xtick)
+		plt.plot(y, color='green')
+		if show:
 			plt.show()
-			cnt+=1
 
+	def best_models(self):
+		with open('AllModels_2.json') as f:
+			models = json.loads(f.read())
 
+		bestTO = {}
+		bestAM = {}
+		bestNY = {}
+
+		for i in models:
+			keyz = i.keys()
+			# print(keyz)
+			best = 1e5
+			if 'Torino' in keyz:
+				for j in i['Torino']:
+					try:
+						if j['MRE'] - best < -0.1 and j['MRE'] > 0:
+							best = j['MRE']
+							bestTO['P'] = j['P']
+							bestTO['Q'] = j['Q']
+							bestTO['D'] = j['D']
+							bestTO['MRE'] = j['MRE']
+					except:
+						pass
+			elif 'Amsterdam' in keyz:
+				for j in i['Amsterdam']:
+					try:
+						if j['MRE'] - best < -0.1 and j['MRE'] > 0:
+							best = j['MRE']
+							bestAM['P'] = j['P']
+							bestAM['Q'] = j['Q']
+							bestAM['D'] = j['D']
+							bestAM['MRE'] = j['MRE']
+					except:
+						pass
+
+			elif 'New York City' in keyz:
+				for j in i['New York City']:
+					try:
+						if j['MRE'] - best < -0.1 and j['MRE'] > 0:
+							best = j['MRE']
+							bestNY['P'] = j['P']
+							bestNY['Q'] = j['Q']
+							bestNY['D'] = j['D']
+							bestNY['MRE'] = j['MRE']
+					except:
+						pass
+
+		print(bestTO)
+		print(bestAM)
+		print(bestNY)
+
+		return bestTO, bestAM, bestNY
+
+	
+	def expanding(self, last_training_day=21):
+		cnt = 0
+		bestTO, bestAM, bestNY = self.best_models()
+		
+		p_to, d_to, q_to = bestTO['P'], bestTO['D'], bestTO['Q']
+		p_am, d_am, q_am = bestAM['P'], bestAM['D'], bestAM['Q']
+		p_ny, d_ny, q_ny = bestNY['P'], bestNY['D'], bestNY['Q']
+		mre_to, mre_am, mre_ny = bestTO['MRE'], bestAM['MRE'], bestNY['MRE']
+		ps = [p_to, p_am, p_ny]
+		qs = [q_to, q_am, q_ny]
+		ds = [d_to, d_am, d_ny]
+		mres = [mre_to, mre_am, mre_ny]
+
+		#expanding
+		for c in range(1,3):
+			df = self.dataframes[c]
+			train = []
+			# add first week to train
+			for i in range(6*24):
+				train.append(df.loc[i, 'Total'])
+
+			test = df[24*last_training_day::]
+			errs = []
+			for i in range(7,last_training_day+1):
+				#add, every iteration, a new day in the training data
+				for j in range(i*24, i*24+24):
+					train.append(df.loc[j,'Total'])
+					try:	
+						model = ARIMA(train, order=(ps[c],ds[c],qs[c])).fit(disp=0)
+						fc,_,_ = model.forecast(len(test.index))
+						fc_s = pd.Series(fc, index=test.index)
+						mre = self.mean_relative_error(test['Total'], fc_s)
+						print(mre)
+						errs.append(mre)
+					except:
+						traceback.print_exc()
+			print(mres[c])
+			plt.figure()
+			plt.title('Sliding Strategy [W=24 hours]')
+			plt.ylabel('Mean Relative Error')
+			plt.plot(errs)
+			plt.savefig('plots/ExpandingStrategy{}'.format(self.cities[c]))
 
 
 
