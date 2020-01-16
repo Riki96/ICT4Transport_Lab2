@@ -233,7 +233,6 @@ class DataMining:
 		# x = [i for i in range(len(y))]
 		# plt.xticks(x, xtick)
 		plt.plot(y)
-		# plt.show()
 
 		xtick = []
 		y = []
@@ -245,7 +244,6 @@ class DataMining:
 		# x = [i for i in range(len(y))]
 		# plt.xticks(x, xtick)
 		plt.plot(y, color='red')
-		# plt.show()
 
 		xtick = []
 		y = []
@@ -328,28 +326,32 @@ class DataMining:
 		mres = [mre_to, mre_am, mre_ny]
 
 		#expanding
-		for c in range(1,3):
+		for c in range(2,3):
 			df = self.dataframes[c]
-			train = []
-			# add first week to train
-			for i in range(6*24):
-				train.append(df.loc[i, 'Total'])
-
+			train = df[0:24*7] #first 7 days of data
 			test = df[24*last_training_day::]
 			errs = []
-			for i in range(7,last_training_day+1):
-				#add, every iteration, a new day in the training data
-				for j in range(i*24, i*24+24):
-					train.append(df.loc[j,'Total'])
+			index = 24*7+1
+			for i in range(8,last_training_day+1):
+				for j in range(24):
+					history = [x for x in train['Total']]
 					try:	
-						model = ARIMA(train, order=(ps[c],ds[c],qs[c])).fit(disp=0)
-						fc,_,_ = model.forecast(len(test.index))
+						model = ARIMA(history, order=(ps[c],ds[c],qs[c])).fit(disp=0)
+						# fc,_,_ = model.forecast(len(test.index))
+						# fc_s = pd.Series(fc, index=test.index)
+						fc,_,_ = model.forecast()
 						fc_s = pd.Series(fc, index=test.index)
 						mre = self.mean_relative_error(test['Total'], fc_s)
 						print(mre)
 						errs.append(mre)
 					except:
 						traceback.print_exc()
+
+					# new_values = pd.DataFrame([df.lo])
+					train = train.append(df[(i-1)*24:i*24], ignore_index=True)
+				# print(train)
+				# exit()
+
 			print(mres[c])
 			plt.figure()
 			plt.title('Sliding Strategy [W=24 hours]')
@@ -357,6 +359,47 @@ class DataMining:
 			plt.plot(errs)
 			plt.savefig('plots/ExpandingStrategy{}'.format(self.cities[c]))
 
+
+	def sliding(self, last_training_day=21):
+		cnt = 0
+		bestTO, bestAM, bestNY = self.best_models()
+		
+		p_to, d_to, q_to = bestTO['P'], bestTO['D'], bestTO['Q']
+		p_am, d_am, q_am = bestAM['P'], bestAM['D'], bestAM['Q']
+		p_ny, d_ny, q_ny = bestNY['P'], bestNY['D'], bestNY['Q']
+		mre_to, mre_am, mre_ny = bestTO['MRE'], bestAM['MRE'], bestNY['MRE']
+		ps = [p_to, p_am, p_ny]
+		qs = [q_to, q_am, q_ny]
+		ds = [d_to, d_am, d_ny]
+		mres = [mre_to, mre_am, mre_ny]
+
+		for c in range(3):
+			df = self.dataframes[c]
+			train = df.loc[0:7*24, 'Total']
+			test = df.loc[last_training_day*24::]
+			errs = []
+			for i in range(8*24, (last_training_day+1)*24):
+				history = [x for x in train]
+				try:	
+					model = ARIMA(history, order=(ps[c],ds[c],qs[c])).fit(disp=0)
+					fc,_,_ = model.forecast(len(test.index))
+					fc_s = pd.Series(fc, index=test.index)
+					mre = self.mean_relative_error(test['Total'], fc_s)
+					print(mre)
+					errs.append(mre)
+				except:
+					# traceback.print_exc()
+					pass
+
+				new_values = df.loc[i:i+1, 'Total']
+				train = train.append(new_values)
+				train = train.drop(train.index[0])
+			print(mres[c])
+			plt.figure()
+			plt.title('Expanding Strategy [W=24 hours]')
+			plt.ylabel('Mean Relative Error')
+			plt.plot(errs)
+			plt.savefig('plots/SlidingStrategy{}'.format(self.cities[c].strip()))
 
 
 
