@@ -141,17 +141,24 @@ class DataMining:
 			plt.show()
 
 	def mean_relative_error(self, test, prediction):
-		re = (abs(test.subtract(prediction))/abs(test)).sum()
-		mre = re/test.mean()
-		return mre
+		sum_ = 0
+		for i in range(len(test)):
+			diff = abs(test[i] - prediction[i])/abs(test[i])
+			sum_ += diff
 
-	def model_fitting(self, train_size=24*14, append=0, sliding=0, start=650):
-		ps = [1,2,3,4,5,6,7]
+		mre = sum_ / len(test)
+		return mre*100
+
+	def mean_relative_error2(self, test, prediction):
+		return abs(test-prediction)/abs(test)*100
+
+	def model_fitting(self, train_size=24*7, test_size=24*7):
+		ps = [1,2,3,4,5,6]
 		ds = [0,1]
-		qs = [1,2,3,4,5,6,7]
-
-		# with open('AllModels_2.json') as f:
-			# obj = json.loads(f.read()) #file in which all the models performances will be saved
+		qs = [1,2,3,4,5,6]
+		# ps = [2]
+		# ds = [0]
+		# qs = [2]
 			
 		obj = []
 		obj.append({
@@ -167,26 +174,27 @@ class DataMining:
 		error_am = []
 		error_ny = []
 		cnt = 0
-		# self.best_order = {} #object to save only the model with the lowest MRE
-		len_test = 24*7
+
 		for df in self.dataframes:
-			df = df.loc[:, 'Total']
-			train, test = df[0:train_size], df[train_size:train_size+len_test]
+			df = df['Total'].to_numpy()
+			train, test = df[0:train_size], df[train_size:train_size+test_size]
 			mre_min = 1e5
-			history = [x for x in train]
 			for d in ds:
 				for p in ps:
 					for q in qs:
-						yhats = []
 						print('ARIMA -> [{},{},{}]'.format(p,d,q))
 						try:
-							model = ARIMA(history, order=(p,d,q))
-							model_fit = model.fit(disp=0)
-							fc, se, conf = model_fit.forecast(len(test.index))
-							fc_s = pd.Series(fc, index=test.index)
-							lowers = pd.Series(conf[:,0], index=test.index)
-							uppers = pd.Series(conf[:,1], index=test.index)
-							mre = self.mean_relative_error(test, fc_s)
+							fc_ = []
+							history = [x for x in train]
+							for t in range(test_size):
+								model = ARIMA(history, order=(p,d,q))
+								model_fit = model.fit(disp=0)
+								# fc, se, conf = model_fit.forecast(len(test.index))
+								fc, se, conf = model_fit.forecast()
+								fc_.append(fc[0])
+								history.append(test[t])
+
+							mre = self.mean_relative_error(test, fc_)
 							tmp_obj = {
 								'P':p,
 								'D':d,
@@ -214,7 +222,7 @@ class DataMining:
 
 			cnt += 1
 
-	def error_plotting(self):
+	def error_plotting(self, show=1):
 		with open('AllModels_2.json') as f:
 			models = json.loads(f.read())
 
@@ -223,37 +231,21 @@ class DataMining:
 		ny_models = models['New York City']
 
 		plt.figure()
-		xtick = []
 		y = []
 		for i in to_models:
 			if i['MRE'] != 'Impossible to fit':
 				y.append(i['MRE'])
-				# xtick.append('p={}-d={}-q={}'.format(i['P'],i['D'],i['Q']))
-		# y = [i for i in y if i<100]
-		# x = [i for i in range(len(y))]
-		# plt.xticks(x, xtick)
 		plt.plot(y)
-
-		xtick = []
 		y = []
 		for i in am_models:
 			if i['MRE'] != 'Impossible to fit':
 				y.append(i['MRE'])
-				# xtick.append('p={}-d={}-q={}'.format(i['P'],i['D'],i['Q']))
-		# y = [i for i in y if i<100]
-		# x = [i for i in range(len(y))]
-		# plt.xticks(x, xtick)
 		plt.plot(y, color='red')
-
-		xtick = []
 		y = []
 		for i in ny_models:
 			if i['MRE'] != 'Impossible to fit':
 				y.append(i['MRE'])
-				# xtick.append('p={}-d={}-q={}'.format(i['P'],i['D'],i['Q']))
-		# y = [i for i in y if i<100]
-		# x = [i for i in range(len(y))]
-		# plt.xticks(x, xtick)
+
 		plt.plot(y, color='green')
 		if show:
 			plt.show()
@@ -269,7 +261,7 @@ class DataMining:
 		for i in models:
 			keyz = i.keys()
 			# print(keyz)
-			best = 1e5
+			best = 100
 			if 'Torino' in keyz:
 				for j in i['Torino']:
 					try:
@@ -311,8 +303,45 @@ class DataMining:
 
 		return bestTO, bestAM, bestNY
 
+	def plot_data_vs_predict(self, train_size=24*7, test_size=24*7):
+		best_models = self.best_models()
+		cnt = 0
+		for df in self.dataframes:
+			df = df['Total'].to_numpy()
+			train, test = df[0:train_size], df[train_size:train_size+test_size]
+
+			p,d,q = best_models[cnt]['P'], best_models[cnt]['D'], best_models[cnt]['Q']
+			print(p,d,q)
+			fc_ = []
+			history = [x for x in train]
+			for t in range(test_size):
+				model = ARIMA(history, order=(p,d,q)).fit(disp=0)
+				fc,conf,se = model.forecast()
+				fc_.append(fc[0])
+				history.append(test[t])
+
+			plt.figure()
+			plt.plot(test)
+			plt.plot(fc_, label='Model [%d,%d,%d]'%(p,d,q))
+			plt.show()
+
+			cnt += 1
+
+	def prepare_models(self):
+		bestTO, bestAM, bestNY = self.best_models()
+		
+		p_to, d_to, q_to = bestTO['P'], bestTO['D'], bestTO['Q']
+		p_am, d_am, q_am = bestAM['P'], bestAM['D'], bestAM['Q']
+		p_ny, d_ny, q_ny = bestNY['P'], bestNY['D'], bestNY['Q']
+		mre_to, mre_am, mre_ny = bestTO['MRE'], bestAM['MRE'], bestNY['MRE']
+		ps = [p_to, p_am, p_ny]
+		qs = [q_to, q_am, q_ny]
+		ds = [d_to, d_am, d_ny]
+		mres = [mre_to, mre_am, mre_ny]
+
+		return ps, ds, qs		
 	
-	def expanding(self, last_training_day=21):
+	def expanding(self, train_start=120, test_size=24*7):
 		cnt = 0
 		bestTO, bestAM, bestNY = self.best_models()
 		
@@ -326,42 +355,40 @@ class DataMining:
 		mres = [mre_to, mre_am, mre_ny]
 
 		#expanding
-		for c in range(2,3):
-			df = self.dataframes[c]
-			train = df[0:24*7] #first 7 days of data
-			test = df[24*last_training_day::]
+		cnt = 0
+		for df in self.dataframes:
+			df = df['Total'].to_numpy()
+			train = df[0:train_start] #first 7 days of data
 			errs = []
-			index = 24*7+1
-			for i in range(8,last_training_day+1):
-				for j in range(24):
-					history = [x for x in train['Total']]
-					try:	
-						model = ARIMA(history, order=(ps[c],ds[c],qs[c])).fit(disp=0)
-						# fc,_,_ = model.forecast(len(test.index))
-						# fc_s = pd.Series(fc, index=test.index)
-						fc,_,_ = model.forecast()
-						fc_s = pd.Series(fc, index=test.index)
-						mre = self.mean_relative_error(test['Total'], fc_s)
-						print(mre)
-						errs.append(mre)
-					except:
-						traceback.print_exc()
+			try:
+				history = [x for x in train]
+				# for i in range(len(df) - train_start):
+				for i in range(24*7):
+					train = df[0:i+train_start]
+					history = [x for x in train]
+					fc_ = []
+					for j in range(test_size):
+						print(j)
+						model = ARIMA(history, order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
+						fc,conf,se = model.forecast()
+						fc_.append(fc)
+						history.append(df[i+train_start+j])
+					mre = self.mean_relative_error(df[i+train_start:i+train_start+test_size], fc_)
+					print(mre)
+					errs.append(mre)
+			except:
+				traceback.print_exc()
 
-					# new_values = pd.DataFrame([df.lo])
-					train = train.append(df[(i-1)*24:i*24], ignore_index=True)
-				# print(train)
-				# exit()
-
-			print(mres[c])
 			plt.figure()
-			plt.title('Sliding Strategy [W=24 hours]')
+			plt.title('Expanding Strategy [W=1 Hour] - {}'.format(self.cities[cnt]))
 			plt.ylabel('Mean Relative Error')
 			plt.plot(errs)
-			plt.savefig('plots/ExpandingStrategy{}'.format(self.cities[c]))
+			plt.savefig('plots/ExpandingStrategy{}'.format(self.cities[cnt].strip()))
+			cnt += 1
+			exit()
 
 
-	def sliding(self, last_training_day=21):
-		cnt = 0
+	def sliding(self, test_size=24*7):
 		bestTO, bestAM, bestNY = self.best_models()
 		
 		p_to, d_to, q_to = bestTO['P'], bestTO['D'], bestTO['Q']
@@ -372,34 +399,63 @@ class DataMining:
 		qs = [q_to, q_am, q_ny]
 		ds = [d_to, d_am, d_ny]
 		mres = [mre_to, mre_am, mre_ny]
+		cnt = 0
+		sliding_size = [24*5, 24*7, 24*14, 24*21]
 
-		for c in range(3):
-			df = self.dataframes[c]
-			train = df.loc[0:7*24, 'Total']
-			test = df.loc[last_training_day*24::]
-			errs = []
-			for i in range(8*24, (last_training_day+1)*24):
+		for w in sliding_size:
+			for df in self.dataframes:
+				train = df[0:sliding_size]
 				history = [x for x in train]
-				try:	
-					model = ARIMA(history, order=(ps[c],ds[c],qs[c])).fit(disp=0)
-					fc,_,_ = model.forecast(len(test.index))
-					fc_s = pd.Series(fc, index=test.index)
-					mre = self.mean_relative_error(test['Total'], fc_s)
-					print(mre)
-					errs.append(mre)
-				except:
-					# traceback.print_exc()
-					pass
 
-				new_values = df.loc[i:i+1, 'Total']
-				train = train.append(new_values)
-				train = train.drop(train.index[0])
-			print(mres[c])
+				for i in range(24*7):
+					fc_ = []
+					for j in range(test_size):
+						model = ARIMA(history, order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
+						fc,conf,se = model.forecast()
+						fc_.append(fc)
+						history.append(df[sliding_size+i+j])
+						
 			plt.figure()
-			plt.title('Expanding Strategy [W=24 hours]')
+			plt.title('Sliding Strategy [W=1 Hour] - {}'.format(self.cities[cnt]))
 			plt.ylabel('Mean Relative Error')
 			plt.plot(errs)
-			plt.savefig('plots/SlidingStrategy{}'.format(self.cities[c].strip()))
+			plt.savefig('plots/SlidingStrategy{}'.format(self.cities[cnt].strip()))
+			cnt += 1
+
+	def horizon(self, train_size=24*14):
+		ps, ds, qs = self.prepare_models()
+
+		df = self.AM
+		df = df['Total'].to_numpy()
+		train, test = df[0:train_size], df[train_size::]
+		
+
+		ws = [i for i in range(3,25,3)]
+		# print(w)
+		for w in ws:
+			history = [x for x in train]
+			errs = []
+			for i in range(0,len(test),w):
+				print(round(i/len(test),2))
+				model = ARIMA(history, order=(ps[1], ds[1], qs[1])).fit(disp=-1)
+				fc,conf,se = model.forecast(w)
+				mre = self.mean_relative_error(test[i:i+w], fc)
+				print(mre)
+				# history.append(test[i:i+w])
+				errs.append(mre)
+				try:
+					for j in range(w):
+						history.append(test[i+j])
+				except:
+					pass
+
+			plt.figure()
+			plt.plot(errs)
+			plt.title('MRE with Window {}'.format(w))
+			plt.ylabel('MRE')
+			plt.savefig('plots/HorizonWindow{}'.format(w))
+
+
 
 
 
