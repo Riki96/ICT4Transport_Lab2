@@ -113,12 +113,12 @@ class DataMining:
 		for df in self.dataframes:
 			data = df.loc[:, 'Total']
 			fig, ax = plt.subplots(2)
-			plot_acf(data, ax=ax[0], lags=lags, title='ACF for {}'.format(self.cities[cnt].strip()))
+			plot_acf(data, ax=ax[0], lags=lags, title='ACF for {}'.format(self.cities[cnt].replace(" ","")))
 			plot_pacf(data, ax=ax[1], lags=lags, title='PACF')
 			if show:
 				plt.show()
 			if save:
-				plt.savefig('plots/ACF_PACF_{}.png'.format(names[cnt].strip()))
+				plt.savefig('plots/ACF_PACF_{}.png'.format(names[cnt].replace(" ","")))
 			plt.close()
 			cnt += 1
 	
@@ -152,10 +152,10 @@ class DataMining:
 	def MAPE2(self, test, prediction):
 		return abs(test-prediction)/abs(test)*100
 
-	def model_fitting(self, train_size=24*7, test_size=24*7):
-		ps = [1,2,3,4,5,6]
-		ds = [0,1]
-		qs = [1,2,3,4,5,6]
+	def model_fitting(self, train_size=24*14, test_size=24*7):
+		ps = [2,3,4,5,6]
+		ds = [1]
+		qs = [3,4,5,6]
 		# ps = [2]
 		# ds = [0]
 		# qs = [2]
@@ -173,9 +173,9 @@ class DataMining:
 		error_to = []
 		error_am = []
 		error_ny = []
-		cnt = 0
+		cnt = 2
 
-		for df in self.dataframes:
+		for df in [self.NY]:
 			df = df['Total'].to_numpy()
 			train, test = df[0:train_size], df[train_size:train_size+test_size]
 			MAPE_min = 1e5
@@ -188,7 +188,7 @@ class DataMining:
 							history = [x for x in train]
 							for t in range(test_size):
 								model = ARIMA(history, order=(p,d,q))
-								model_fit = model.fit(disp=0)
+								model_fit = model.fit(disp=-1)
 								# fc, se, conf = model_fit.forecast(len(test.index))
 								fc, se, conf = model_fit.forecast()
 								fc_.append(fc[0])
@@ -203,9 +203,6 @@ class DataMining:
 							}
 							obj[cnt][self.cities[cnt]].append(tmp_obj)
 							print('Error: {}'.format(MAPE))
-							with open('AllModels_2.json', 'w') as f:
-								f.write(json.dumps(obj, indent=4))
-
 							if MAPE < MAPE_min:
 								print('Best Model for {} is --> [{},{},{}] with {} MAPE'.format(self.cities[cnt],p,d,q,MAPE))
 								# self.best_order[self.cities[cnt]] = [p,d,q]
@@ -219,6 +216,16 @@ class DataMining:
 								'MAPE':'Impossible to fit'
 							}
 							obj[cnt][self.cities[cnt]].append(tmp_obj)
+
+						if cnt == 0:
+							with open('AllModelsTO.json', 'w') as f:
+								f.write(json.dumps(obj, indent=4))
+						elif cnt == 1:
+							with open('AllModelsAM.json', 'w') as f:
+								f.write(json.dumps(obj, indent=4))
+						else:
+							with open('AllModelsNY.json', 'w') as f:
+								f.write(json.dumps(obj, indent=4))
 
 			cnt += 1
 
@@ -251,7 +258,7 @@ class DataMining:
 			plt.show()
 
 	def best_models(self):
-		with open('AllModels_2.json') as f:
+		with open('AllModels.json') as f:
 			models = json.loads(f.read())
 
 		bestTO = {}
@@ -303,6 +310,20 @@ class DataMining:
 
 		return bestTO, bestAM, bestNY
 
+	def prepare_models(self):
+		bestTO, bestAM, bestNY = self.best_models()
+		
+		p_to, d_to, q_to = bestTO['P'], bestTO['D'], bestTO['Q']
+		p_am, d_am, q_am = bestAM['P'], bestAM['D'], bestAM['Q']
+		p_ny, d_ny, q_ny = bestNY['P'], bestNY['D'], bestNY['Q']
+		MAPE_to, MAPE_am, MAPE_ny = bestTO['MAPE'], bestAM['MAPE'], bestNY['MAPE']
+		ps = [p_to, p_am, p_ny]
+		qs = [q_to, q_am, q_ny]
+		ds = [d_to, d_am, d_ny]
+		MAPEs = [MAPE_to, MAPE_am, MAPE_ny]
+
+		return ps, ds, qs
+
 	def plot_data_vs_predict(self, train_size=24*7, test_size=24*7):
 		best_models = self.best_models()
 		cnt = 0
@@ -327,20 +348,6 @@ class DataMining:
 
 			cnt += 1
 
-	def prepare_models(self):
-		bestTO, bestAM, bestNY = self.best_models()
-		
-		p_to, d_to, q_to = bestTO['P'], bestTO['D'], bestTO['Q']
-		p_am, d_am, q_am = bestAM['P'], bestAM['D'], bestAM['Q']
-		p_ny, d_ny, q_ny = bestNY['P'], bestNY['D'], bestNY['Q']
-		MAPE_to, MAPE_am, MAPE_ny = bestTO['MAPE'], bestAM['MAPE'], bestNY['MAPE']
-		ps = [p_to, p_am, p_ny]
-		qs = [q_to, q_am, q_ny]
-		ds = [d_to, d_am, d_ny]
-		MAPEs = [MAPE_to, MAPE_am, MAPE_ny]
-
-		return ps, ds, qs		
-	
 	def expanding(self, train_start=24*7, test_size=24*7, n=24):
 		ps, ds, qs = self.prepare_models()
 
@@ -354,7 +361,7 @@ class DataMining:
 			try:
 				history = [x for x in train]
 				# for i in range(len(df) - train_start):
-				for i in range(0,24*22,n):
+				for i in range(0,24*15,n):
 					print(i)
 					train = df[0:i+train_start]
 					history = [x for x in train]
@@ -369,53 +376,56 @@ class DataMining:
 					self.expanding_dict[self.cities[cnt]].append(MAPE)
 			except:
 				traceback.print_exc()
-
 			# plt.figure()
 			# plt.title('Expanding Strategy [W=1 Hour] - {}'.format(self.cities[cnt]))
 			# plt.ylabel('Mean Relative Error')
 			# plt.plot(errs)
-			# plt.savefig('plots/ExpandingStrategy{}'.format(self.cities[cnt].strip()))
+			# plt.savefig('plots/ExpandingStrategy{}'.format(self.cities[cnt].replace(" ","")))
 			cnt += 1
 
-	def sliding(self, test_size=24*7):
+	def sliding(self, train_start=24*7, test_size=24*7, n=24):
 		ps, ds, qs = self.prepare_models()
 
-		sliding_size = [24*i for i in range(7,22)]
+		sliding_size = range(0,24*15,n)
 		cnt = 0
 		self.sliding_dict = {}
 		for df in self.dataframes:
 			self.sliding_dict[self.cities[cnt]] = []
 			df = df['Total'].to_numpy()
 			for w in sliding_size:
-				print(w)
 				try:
-					train = df[0:w]
+					print(w)
+					train = df[0:w+train_start]
 					history = [x for x in train]
 					fc_ = []
 					for i in range(test_size):
 						model = ARIMA(history, order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
 						fc,conf,se = model.forecast()
 						fc_.append(fc[0])
-						history.append(df[w+i])
+						history.append(df[train_start+w+i])
 						history = history[1:]
+					test = df[w:w+test_size]
+					MAPE = self.MAPE(test, fc_)
+					self.sliding_dict[self.cities[cnt]].append(MAPE)
 				except:
+					# test = df[w:w+test_size]
+					MAPE = 100
+					self.sliding_dict[self.cities[cnt]].append(MAPE)
+
 					traceback.print_exc()
 
-				test = df[w:w+test_size]
-				MAPE = self.MAPE(test, fc_)
-				self.sliding_dict[self.cities[cnt]].append(MAPE)
-						
+				
 			# plt.figure()
 			# plt.title('Sliding Strategy [W=1 Hour] - {}'.format(self.cities[cnt]))
 			# plt.ylabel('Mean Relative Error')
 			# plt.xticks(np.linspace(len(sliding_size)), sliding_size, rotation=30)
 			# plt.plot(self.sliding_dict[self.cities[cnt]])
-			# plt.savefig('plots/SlidingStrategy{}'.format(self.cities[cnt].strip()))
+			# plt.savefig('plots/SlidingStrategy{}'.format(self.cities[cnt].replace(" ","")))
 			cnt += 1
 
 	def training_strategy_plotting(self):
-		self.expanding()
 		self.sliding()
+		self.expanding()
 
 		exp_dic = self.expanding_dict
 		sli_dic = self.sliding_dict
@@ -425,9 +435,10 @@ class DataMining:
 			plt.title('Training Strategy for {}'.format(i))
 			plt.plot(exp_dic[i], label='Expanding Window')
 			plt.plot(sli_dic[i], label='Sliding Window')
+			plt.legend()
 			# plt.xticks()
 			plt.ylabel('MAPE')
-			plt.savefig('plots/TrainingStrategy{}'.format(i.strip()))
+			plt.savefig('plots/TrainingStrategy{}'.format(i.replace(" ","")))
 
 	def horizon(self, train_size=24*21, test_size=24*7):
 		ps, ds, qs = self.prepare_models()

@@ -5,1057 +5,433 @@
                 "P": 1,
                 "D": 0,
                 "Q": 1,
-                "MAE": 48.27462627356199
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 44.82660605669269
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 2,
-                "MAE": 48.206253586359544
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 44.69493042724605
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 3,
-                "MAE": 48.20744913838123
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 44.77937341955507
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 4,
-                "MAE": 48.20188368396913
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 45.44191635628616
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 5,
-                "MAE": 48.14503610852064
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": 42.87445160256236
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 6,
-                "MAE": 48.12882298462119
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": 43.72881804819031
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 1,
-                "MAE": 47.4365399776131
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 44.65244449838616
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 2,
-                "MAE": 47.605415434420564
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 38.92194340464295
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 3,
-                "MAE": 47.65610916939765
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 37.183173453091314
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 4,
-                "MAE": 27.935770871460655
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 35.101014229831904
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 5,
-                "MAE": 47.95836448198875
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.49202677643039
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 6,
-                "MAE": 27.884170382832625
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": 37.452957578533955
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 1,
-                "MAE": 47.62332351680709
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 38.85437372682584
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 2,
-                "MAE": 47.609855300230876
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 38.1932313704548
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 3,
-                "MAE": 47.73473276765034
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 32.95166015075007
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 4,
-                "MAE": 47.99565845473263
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 5,
-                "MAE": 47.98151387103223
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.06218131055195
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 1,
-                "MAE": 47.51568040461335
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 36.921525058339874
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 2,
-                "MAE": 47.67471472585375
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 38.604666685162044
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 3,
-                "MAE": 47.285153754476
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.57470566811409
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 4,
-                "MAE": 47.27000386614909
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.63566423744232
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 5,
-                "MAE": 49.893905302307545
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.34945521684308
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 1,
-                "MAE": 46.79125107095931
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 36.44109045597379
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 2,
-                "MAE": 48.05258226517541
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 41.493382353109176
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 3,
-                "MAE": 47.32709400075775
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.60910431172059
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 4,
-                "MAE": 47.334594855316595
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 1,
-                "MAE": 47.40362521679953
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 39.97724149908812
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 2,
-                "MAE": 57.80230186249887
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 44.75964064166191
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 3,
-                "MAE": 47.58150035886182
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.357765705919626
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 5,
-                "MAE": 47.352732329618654
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 1,
-                "MAE": 50.32884207274704
-            },
-            {
-                "P": 1,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 31.47221317246546
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 2,
-                "MAE": 50.26344776855444
-            },
-            {
-                "P": 1,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 1,
-                "MAE": 50.20868046191954
-            },
-            {
-                "P": 2,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 34.43116610769233
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 2,
-                "MAE": 81.21043665276095
-            },
-            {
-                "P": 2,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 39.965793200250815
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 1,
-                "MAE": 50.173370861691716
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 34.377319106693896
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 2,
-                "MAE": 48.758984409785775
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 44.05752493851459
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 1,
-                "MAE": 50.17380386765446
-            },
-            {
-                "P": 4,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 35.29431946885906
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 1,
-                "MAE": 49.6139203390081
-            },
-            {
-                "P": 5,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 34.71791595851342
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 1,
-                "MAE": 48.951215294795546
-            },
-            {
-                "P": 6,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 44.226685367307034
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 1,
-                "MAE": 47.28827203495347
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 2,
-                "MAE": 47.297115775501005
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 3,
-                "MAE": 47.55592147465655
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 4,
-                "MAE": 57.86004789349634
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 5,
-                "MAE": 57.37507058497313
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 1,
-                "MAE": 47.31198360846313
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 2,
-                "MAE": 56.15148254652404
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 3,
-                "MAE": 51.133133741537584
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 4,
-                "MAE": 47.30104111065233
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 5,
-                "MAE": 49.945681594788546
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 6,
-                "MAE": 47.906573905331065
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 1,
-                "MAE": 47.41732085970844
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 2,
-                "MAE": 47.661430470623834
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 3,
-                "MAE": 51.083026714494
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 4,
-                "MAE": 47.53374955061955
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 5,
-                "MAE": 49.61888807438207
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 6,
-                "MAE": 52.34764620151497
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 1,
-                "MAE": 48.5150262421899
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 2,
-                "MAE": 47.33181882492441
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 3,
-                "MAE": 50.1644165336065
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 4,
-                "MAE": 49.6126858249761
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 6,
-                "MAE": 47.538327268536904
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 1,
-                "MAE": 49.77844119124245
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 2,
-                "MAE": 49.883110785124614
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 3,
-                "MAE": 49.53646152507043
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 4,
-                "MAE": 48.821015745206104
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 5,
-                "MAE": 47.9930040907666
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 1,
-                "MAE": 47.28361640857737
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 2,
-                "MAE": 67.84741639692109
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             }
         ]
     },
@@ -1065,1069 +441,433 @@
                 "P": 1,
                 "D": 0,
                 "Q": 1,
-                "MAE": 24.74084233964568
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 54.540005901971966
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 2,
-                "MAE": 24.634783195484555
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 54.25459141191615
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 3,
-                "MAE": 24.63594801610609
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 54.250391707801214
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 4,
-                "MAE": 24.648078413617387
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 53.16602517910448
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 5,
-                "MAE": 24.673343913435332
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": 62.18984495568781
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 6,
-                "MAE": 24.589341246547278
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 1,
-                "MAE": 23.7740578602015
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 49.372549505069074
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 2,
-                "MAE": 23.67654688080799
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 3,
-                "MAE": 23.85306087208612
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 5,
-                "MAE": 15.263301141189741
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 6,
-                "MAE": 24.89893236429227
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 1,
-                "MAE": 23.670444643787963
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 49.09543657296326
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 2,
-                "MAE": 23.663471585624695
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 49.39812451141293
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 3,
-                "MAE": 23.780002022524556
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 5,
-                "MAE": 14.063181299244754
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 6,
-                "MAE": 24.87004679373334
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 1,
-                "MAE": 23.8090767714089
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 48.86901495425726
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 2,
-                "MAE": 23.76521016659592
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 43.45351241464905
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 3,
-                "MAE": 23.76309965453756
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 4,
-                "MAE": 23.60689070871038
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 5,
-                "MAE": 23.825741642258496
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 6,
-                "MAE": 13.867225035186095
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 1,
-                "MAE": 23.41103516139881
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 47.68751485129256
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 2,
-                "MAE": 24.629482010926637
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 47.847499539229005
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 3,
-                "MAE": 23.593586846406737
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 51.04258157366702
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 4,
-                "MAE": 23.84478054138347
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 5,
-                "MAE": 23.858702672501643
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 6,
-                "MAE": 24.050805108320183
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 1,
-                "MAE": 23.445710252340916
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 48.08649079480396
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 2,
-                "MAE": 95.98607008151893
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 48.61594571424786
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 3,
-                "MAE": 23.893414007647724
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 4,
-                "MAE": 23.90743173477499
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 1,
-                "MAE": 24.965090289428037
-            },
-            {
-                "P": 1,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 39.549585059065365
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 2,
-                "MAE": 24.91090369252033
-            },
-            {
-                "P": 1,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 1,
-                "MAE": 24.869403338512317
-            },
-            {
-                "P": 2,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 53.1036792852351
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 2,
-                "MAE": 35.16109170132696
-            },
-            {
-                "P": 2,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 1,
-                "MAE": 24.703754836887583
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 39.371734188699214
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 2,
-                "MAE": 24.71852914056883
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 52.57476620219309
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 1,
-                "MAE": 24.70516866537043
-            },
-            {
-                "P": 4,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 39.23292194281232
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 2,
-                "MAE": 23.814882151087197
-            },
-            {
-                "P": 4,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 45.725182773395126
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 1,
-                "MAE": 24.527414631104
-            },
-            {
-                "P": 5,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 49.78678277925515
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 2,
-                "MAE": 23.40915160828872
-            },
-            {
-                "P": 5,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 39.584568302744486
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 1,
-                "MAE": 24.352797236315812
-            },
-            {
-                "P": 6,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 48.55927659302156
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 2,
-                "MAE": 23.445669817239672
-            },
-            {
-                "P": 6,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 49.48270142294044
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 1,
-                "MAE": 27.173258677820314
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 2,
-                "MAE": 27.150734795731314
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 3,
-                "MAE": 29.800106893366124
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 4,
-                "MAE": 55.62427203261846
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 6,
-                "MAE": 57.39598089540601
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 1,
-                "MAE": 28.847956578422192
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 2,
-                "MAE": 29.7547702652275
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 3,
-                "MAE": 30.05882428100685
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 4,
-                "MAE": 30.86428333005473
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 5,
-                "MAE": 1465.0912259144668
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 6,
-                "MAE": 30.396111920282156
-            },
-            {
-                "P": 2,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 1,
-                "MAE": 28.823585310424093
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 2,
-                "MAE": 29.120654225913118
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 3,
-                "MAE": 31.43444191957094
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 4,
-                "MAE": 28.66594343480038
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 1,
-                "MAE": 29.14896263642057
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 2,
-                "MAE": 28.706755928173177
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 3,
-                "MAE": 27.57026535636887
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 1,
-                "MAE": 26.83142506614054
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 2,
-                "MAE": 28.51750275869751
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 3,
-                "MAE": 119.18286506472323
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 6,
-                "MAE": 25.41319894644105
-            },
-            {
-                "P": 5,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 1,
-                "MAE": 25.837227055938286
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 2,
-                "MAE": 55.779666353838344
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 3,
-                "MAE": 25.15254890596066
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 4,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 5,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 6,
-                "MAE": 112.49079116749023
-            },
-            {
-                "P": 6,
-                "D": 2,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             }
         ]
     },
@@ -2137,673 +877,385 @@
                 "P": 1,
                 "D": 0,
                 "Q": 1,
-                "MAE": 31.845081261016144
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.97082054856123
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 2,
-                "MAE": 31.767416185465567
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 36.59128676833474
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 3,
-                "MAE": 31.745387842823476
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 34.924955060226445
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 4,
-                "MAE": 31.745911974599004
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 34.4873349306505
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 5,
-                "MAE": 31.758827156701955
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": 34.53791121400864
             },
             {
                 "P": 1,
                 "D": 0,
                 "Q": 6,
-                "MAE": 31.83569486334625
-            },
-            {
-                "P": 1,
-                "D": 0,
-                "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": 32.403046549014576
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 1,
-                "MAE": 30.5883820626599
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 30.422929937990816
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 2,
-                "MAE": 30.697559739644827
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.265905911702273
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 3,
-                "MAE": 32.099835424399984
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.451335409961978
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 4,
-                "MAE": 30.53195939937359
-            },
-            {
-                "P": 2,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 31.91496769096111
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": 31.937457188435314
             },
             {
                 "P": 2,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 1,
-                "MAE": 30.618572640058893
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.307712174071295
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 2,
-                "MAE": 30.544363991806062
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.65124474074144
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 3,
-                "MAE": 30.850582025253132
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.61291193885967
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 4,
-                "MAE": 30.556270138719082
-            },
-            {
-                "P": 3,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 31.930893158959545
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.433214631707337
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 2,
-                "MAE": 30.540622437570207
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.528722768373388
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 3,
-                "MAE": 30.53069801222878
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.686612580486795
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 4,
-                "MAE": 30.558871498169548
-            },
-            {
-                "P": 4,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 30.494398570176134
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 1,
-                "MAE": 30.627554631740388
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.648568815115222
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 2,
-                "MAE": 31.152313395498933
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.48589534231579
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 3,
-                "MAE": 30.54743644847136
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.61876552540662
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 4,
-                "MAE": 30.732660448917766
-            },
-            {
-                "P": 5,
-                "D": 0,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.721350667588613
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.65076469888806
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 2,
-                "MAE": 26.217481697106816
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 30.29135810295808
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 3,
-                "MAE": 31.151767276628885
-            },
-            {
-                "P": 6,
-                "D": 0,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 0,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 1,
-                "MAE": 31.584435069551738
-            },
-            {
-                "P": 1,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 2,
-                "MAE": 31.611070915270155
-            },
-            {
-                "P": 1,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 40.02754612796764
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 1,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 1,
-                "MAE": 31.55088968952199
-            },
-            {
-                "P": 2,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
+                "MAPE": 38.05524166759998
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 2,
-                "MAE": 28.313469400131254
-            },
-            {
-                "P": 2,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": 29.899449520935566
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 2,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 3,
-                "MAE": 27.952694661345415
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 4,
-                "MAE": 30.595882394790827
-            },
-            {
-                "P": 3,
-                "D": 1,
-                "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 3,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 4,
-                "D": 1,
-                "Q": 2,
-                "MAE": 30.42009224885473
-            },
-            {
-                "P": 4,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 3,
-                "MAE": 30.51227675279372
-            },
-            {
-                "P": 4,
-                "D": 1,
-                "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 4,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 5,
-                "D": 1,
-                "Q": 2,
-                "MAE": 30.510934908911842
-            },
-            {
-                "P": 5,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 5,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 1,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 6,
-                "D": 1,
-                "Q": 2,
-                "MAE": 30.570587701273503
-            },
-            {
-                "P": 6,
-                "D": 1,
-                "Q": 2,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 3,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 4,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 5,
-                "MAE": "Impossible to fit"
+                "MAPE": "Impossible to fit"
             },
             {
                 "P": 6,
                 "D": 1,
                 "Q": 6,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 1,
-                "MAE": 3295.419641826752
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 1,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 2,
-                "MAE": 3062.1388895510327
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 2,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 3,
-                "MAE": 245.74728327490038
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 3,
-                "MAE": "Impossible to fit"
-            },
-            {
-                "P": 1,
-                "D": 2,
-                "Q": 4,
-                "MAE": 245.80116935975133
+                "MAPE": "Impossible to fit"
             }
         ]
     }
