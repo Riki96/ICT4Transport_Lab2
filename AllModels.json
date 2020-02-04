@@ -1164,6 +1164,18 @@
             {
                 "P": 3,
                 "D": 1,
+                "Q": 1,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 3,
+                "D": 1,
+                "Q": 2,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 3,
+                "D": 1,
                 "Q": 3,
                 "MAPE": "Impossible to fit"
             },
@@ -1188,6 +1200,18 @@
             {
                 "P": 4,
                 "D": 1,
+                "Q": 1,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 4,
+                "D": 1,
+                "Q": 2,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 4,
+                "D": 1,
                 "Q": 3,
                 "MAPE": "Impossible to fit"
             },
@@ -1212,6 +1236,18 @@
             {
                 "P": 5,
                 "D": 1,
+                "Q": 1,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 5,
+                "D": 1,
+                "Q": 2,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 5,
+                "D": 1,
                 "Q": 3,
                 "MAPE": "Impossible to fit"
             },
@@ -1231,6 +1267,18 @@
                 "P": 5,
                 "D": 1,
                 "Q": 6,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 6,
+                "D": 1,
+                "Q": 1,
+                "MAPE": "Impossible to fit"
+            },
+            {
+                "P": 6,
+                "D": 1,
+                "Q": 2,
                 "MAPE": "Impossible to fit"
             },
             {
@@ -1257,6 +1305,7 @@
                 "Q": 6,
                 "MAPE": "Impossible to fit"
             }
+            
         ]
     }
 ]

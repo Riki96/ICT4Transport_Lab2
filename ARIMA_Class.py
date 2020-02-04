@@ -1,5 +1,7 @@
-import numpy as np
+from PreProcessing_Class import PreProcessing
+import os
 import json
+import numpy as np
 import datetime
 from scipy import stats
 import datetime
@@ -9,11 +11,8 @@ from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import random
 import statsmodels.api as sm
 import seaborn as sb
-import os
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from statsmodels.tsa.arima_model import ARIMA, ARIMAResults
 from pytz import timezone
-from PreProcessing_Class import PreProcessing
 import traceback
 
 class DataMining:
@@ -153,9 +152,9 @@ class DataMining:
 		return abs(test-prediction)/abs(test)*100
 
 	def model_fitting(self, train_size=24*14, test_size=24*7):
-		ps = [2,3,4,5,6]
-		ds = [1]
-		qs = [3,4,5,6]
+		ps = [1,2,3,4,5,6]
+		ds = [0,1]
+		qs = [1,2,3,4,5,6]
 		# ps = [2]
 		# ds = [0]
 		# qs = [2]
@@ -175,7 +174,7 @@ class DataMining:
 		error_ny = []
 		cnt = 2
 
-		for df in [self.NY]:
+		for df in self.dataframes:
 			df = df['Total'].to_numpy()
 			train, test = df[0:train_size], df[train_size:train_size+test_size]
 			MAPE_min = 1e5
@@ -224,7 +223,7 @@ class DataMining:
 							with open('AllModelsAM.json', 'w') as f:
 								f.write(json.dumps(obj, indent=4))
 						else:
-							with open('AllModelsNY.json', 'w') as f:
+							with open('AllModels_2.json', 'w') as f:
 								f.write(json.dumps(obj, indent=4))
 
 			cnt += 1
@@ -424,11 +423,39 @@ class DataMining:
 			cnt += 1
 
 	def ahahahahahahah(self):
-		plt.figure()
-		plt.plot(1,label='Expanding Window')
-		plt.plot(1,label='Sliding Window')
-		plt.legend()
-		plt.savefig('plots/ahahahahahaha.png',dpi=600)
+		# plt.figure()
+		# plt.plot(1,label='Expanding Window')
+		# plt.plot(1,label='Sliding Window')
+		# plt.legend()
+		# plt.savefig('plots/ahahahahahaha.png',dpi=600)
+		self.prepare_models()
+		with open('AllModels.json') as f:
+			obj = json.loads(f.read())
+
+		for city in self.cities:
+			df_to = np.zeros((7,7))
+			to = obj[self.cities.index(city)][city]
+			# print(to)
+			cnt = 36
+			for i in range(df_to.shape[0]):
+				# df_to[i,0] = None
+				for j in range(df_to.shape[1]):
+					if i == 0:
+						df_to[i,j] = None
+					elif j == 0:
+						df_to[i,j] = None
+
+					elif to[cnt]['MAPE'] != 'Impossible to fit':
+						df_to[i,j] = to[cnt]['MAPE']
+						cnt += 1
+					else:
+						df_to[i,j] = None
+						cnt += 1
+
+			df_to = pd.DataFrame(df_to)
+			plt.figure()
+			ax = sb.heatmap(df_to.dropna(), annot=True, fmt='.1f')
+			plt.savefig('plots/Heatmap{}_D=1'.format(city.replace(' ','')))
 
 	def training_strategy_plotting(self):
 		self.sliding()
@@ -447,16 +474,22 @@ class DataMining:
 			plt.ylabel('MAPE')
 			plt.savefig('plots/TrainingStrategy{}'.format(i.replace(" ","")))
 
-	def horizon(self, train_size=24*21, test_size=24*7):
+	def horizon(self, test_size=24*7):
+		#For the previous points, the best parameters for ps,ds,qs are found here
 		ps, ds, qs = self.prepare_models()
-
+		#Instead the best strategy is
+		#Torino -> Expanding with N=24*7+24*2=24*9
+		#Amsterdam -> Expanding with N=24*9
+		#NewYorkCity -> Sliding with N=24*7+24*11=24*18
+		train_sizes = [24*9,24*9,24*18]
 		ws = [i+1 for i in range(24)]
-		cnt = 1
-		for df in [self.AM]:
+		cnt = 0
+		for df in self.dataframes:
 			df = df['Total'].to_numpy()
 			errs = []
 			for w in ws:
-				train = df[0:train_size]
+				print(w)
+				train = df[0:train_sizes[cnt]]
 				history = [x for x in train]
 				fc_ = []
 				for i in range(0,test_size,w):
@@ -464,35 +497,100 @@ class DataMining:
 						# print(i)
 						model = ARIMA(history, order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
 						fc,conf,se = model.forecast(w)
-
-						t = df[train_size+i:train_size+w+i]
+						t = df[train_sizes[cnt]+i:train_sizes[cnt]+w+i]
 						for f in range(len(fc)):
 							fc_.append(fc[f])
 							history.append(t[f])
+							if cnt == 2:
+								history = history[1:]
 					else:
 						j = 168-i
 						model = ARIMA(history, order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
 						fc,conf,se = model.forecast(j)
-						t = df[train_size+i:train_size+j+i]
+						t = df[train_sizes[cnt]+i:train_sizes[cnt]+j+i]
 						for f in range(len(fc)):
 							fc_.append(fc[f])
 							history.append(t[f])
+							if cnt == 2:
+								history = history[1:]
 
-				test = df[train_size:train_size+test_size]
-
-				print('-------')
-				print(len(fc_))
-				print('-------')
-
+				test = df[train_sizes[cnt]:train_sizes[cnt]+test_size]
 				MAPE = self.MAPE(test, fc_)
 				errs.append(MAPE)
 
-				plt.plot(errs)
-				plt.savefig('plots/AM_HORIZON.png')
+			plt.figure()
+			plt.title('Horizon for {}'.format(self.cities[cnt].replace(" ","")))
+			plt.ylabel('MAPE')
+			plt.plot(errs)
+			plt.savefig('plots/Horizon{}.png'.format(self.cities[cnt].replace(" ","")))
+			cnt += 1
 
 
+	def plot_prediction(self):
+		ps,ds,qs = self.prepare_models()
+		cnt = 0
+		for df in self.dataframes:
+			# plt.figure(figsize=(15,6))
+			res = ARIMA(df['Total'], order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
+			fig, ax = plt.subplots(figsize=(15,6))
+			ax = df.loc[680:, 'Total'].plot(ax=ax)
+			# fig.figsize(15,6)
+			fig = res.plot_predict(700,756, dynamic=False, ax=ax, plot_insample=False)
+			plt.title('Prediction for {}'.format(self.cities[cnt]))
+			plt.xlabel('Hours')
+			plt.ylabel('Bookings')
+			plt.savefig('plots/PlotPrediction{}'.format(self.cities[cnt].replace(' ','')))
+			cnt += 1
+			# plt.show()
 
+	def plot_fitting(self, test_size=24*7):
+		ps, ds, qs = self.prepare_models()
+		cnt = 0
+		for df in self.dataframes:
+			# plt.plot(df['Total'], label='Original')
+			df = df['Total'].to_numpy()
+			if cnt != 2:
+				train = df[0:24*9]
+				history = [x for x in train]
+				fc_ = []
+				for i in range(test_size):
+					print(round(i/test_size*100, 2))
+					model = ARIMA(history, order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
+					fc,se,conf = model.forecast()
+					fc_.append(fc[0])
+					history.append(df[24*9+i])
+			else:
+				train = df[0:24*18]
+				history = [x for x in train]
+				fc_ = []
+				for i in range(test_size):
+					print(round(i/test_size*100, 2))
+					model = ARIMA(history, order=(ps[cnt], ds[cnt], qs[cnt])).fit(disp=-1)
+					fc,se,conf = model.forecast()
+					fc_.append(fc)
+					history.append(df[24*9+i])
+					history = history[1:]
 
+			train = df[0:24*9]
+			history = [x for x in train]
+			fc_bad = []
+			for i in range(test_size):
+				print(round(i/test_size*100, 2))
+				model = ARIMA(history, order=(1,0,1)).fit(disp=-1)
+				fc,se,conf = model.forecast()
+				fc_bad.append(fc)
+				history.append(df[24*9+i])
+
+			plt.figure(figsize=(15,6))
+			plt.plot(df[24*9:24*9+24*7], label='Original', color='black')
+			plt.plot(fc_bad, label='ARIMA Non-Optimal', linestyle='--')
+			plt.plot(fc_, label='ARIMA [{},{},{}]'.format(ps[cnt],ds[cnt],qs[cnt], color='crimson', linestyle=''))
+			plt.legend()
+			plt.xlabel('Hours')
+			plt.ylabel('Bookings')
+			plt.title('Original vs Model for {}'.format(self.cities[cnt]))
+			plt.savefig('plots/OriginalVsModel{}'.format(self.cities[cnt].replace(' ','')))
+			cnt += 1
 
 
 
