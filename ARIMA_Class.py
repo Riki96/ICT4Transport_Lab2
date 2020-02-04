@@ -423,6 +423,13 @@ class DataMining:
 			# plt.savefig('plots/SlidingStrategy{}'.format(self.cities[cnt].replace(" ","")))
 			cnt += 1
 
+	def ahahahahahahah(self):
+		plt.figure()
+		plt.plot(1,label='Expanding Window')
+		plt.plot(1,label='Sliding Window')
+		plt.legend()
+		plt.savefig('plots/ahahahahahaha.png',dpi=600)
+
 	def training_strategy_plotting(self):
 		self.sliding()
 		self.expanding()
