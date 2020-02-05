@@ -110,4 +110,4 @@ class PreProcessing:
 			df = df.sort_values(['Day', 'Hour'])
 			print('DataFrame Created and Saved')
 			c = c.strip()
-			df.to_excel('data/Data_{}.xlsx'.format(c))
+			df.to_excel('data/Data_{}.xlsx'.format(c.replace(' ','')))
